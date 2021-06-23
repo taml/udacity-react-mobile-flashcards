@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions/decks'
+import { submitDeck } from '../utils/api'
 
 const NewDeck = (props) => {
     const [deckTitle, setDeckTitle] = useState('')
@@ -15,7 +16,8 @@ const NewDeck = (props) => {
     const handleDeckSubmit = (e) => {
         e.preventDefault()
         const { dispatch } = props
-        dispatch(addDeck({title: deckTitle}))
+        const deck = {title: deckTitle, questions: []}
+        submitDeck(deck).then(() => dispatch(addDeck(deck)))
         setDeckTitle('')
         props.navigation.navigate('Decks')
     }
