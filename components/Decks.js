@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { receiveDecks } from '../actions/decks'
 import { getDecks } from '../utils/api'
+import Deck from './Deck'
 
 class Decks extends Component {
     componentDidMount() {
@@ -14,19 +15,26 @@ class Decks extends Component {
     render() {
         const { decks } = this.props
         return(
-            <View>
+            <View style={styles.deckContainer}>
                 {console.log(decks)}
-                <Text>Decks</Text>
+                <Text style={{fontWeight: 700, fontSize: 22}}>Decks</Text>
                 {Object.keys(decks).map((key) => 
-                    <View key={key}>
-                        <Text>{decks[key].title}</Text>
-                        <Text>{decks[key].questions.length}</Text>
-                    </View>
+                    <Deck key={key} singledeck={decks[key]} />
                 )}
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    deckContainer: {
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        textAlign: 'center',
+        padding: 20,
+    }, 
+})
 
 function mapStateToProps( decks ) {
     return {

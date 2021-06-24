@@ -11,12 +11,10 @@ export default function App() {
   const store = createStore(reducer)
   return (
     <Provider store={store}>
-      <View>
-          <StatusBar backgroundColor='#000000' />
-      </View>
+      <StatusBar backgroundColor='#000000' />
       <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
+        <Tabs />
+      </NavigationContainer>
     </Provider>
   )
 }

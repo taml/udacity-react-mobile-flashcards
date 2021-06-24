@@ -19,7 +19,7 @@ const NewDeck = (props) => {
         const deck = {title: deckTitle, questions: []}
         submitDeck(deck).then(() => dispatch(addDeck(deck)))
         setDeckTitle('')
-        props.navigation.navigate('Decks')
+        props.navigation.navigate('DeckDetail', {deckid: deckTitle})
     }
 
     return(
