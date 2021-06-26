@@ -15,11 +15,11 @@ const NewDeck = (props) => {
 
     const handleDeckSubmit = (e) => {
         e.preventDefault()
-        const { dispatch } = props
+        const { dispatch, navigation } = props
         const deck = {title: deckTitle, questions: []}
         submitDeck(deck).then(() => dispatch(addDeck(deck)))
         setDeckTitle('')
-        props.navigation.navigate('DeckDetail', {deckid: deckTitle})
+        navigation.navigate('DeckDetail', {deckid: deck.title})
     }
 
     return(

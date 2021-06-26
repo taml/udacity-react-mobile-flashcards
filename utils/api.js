@@ -7,7 +7,16 @@ export const getDecks = async () => {
       const decks = await AsyncStorage.getItem(DECK_STORAGE_KEY)
       return decks != null ? JSON.parse(decks) : null
     } catch(e) {
-      // error reading value
+      console.log(e)
+    }
+}
+
+export const getDeck = async (deckid) => {
+    try {
+        const decks = await AsyncStorage.getItem(DECK_STORAGE_KEY)
+        return decks != null ? JSON.parse(decks)[deckid] : null
+    } catch(e) {
+        console.log(e)
     }
 }
 
@@ -18,6 +27,20 @@ export const submitDeck = async (deck) => {
         })
         await AsyncStorage.mergeItem(DECK_STORAGE_KEY, deckJSON)
     } catch(e) {
-       // error reading value 
+       console.log(e) 
+    }
+}
+
+export const addQuestion = async (deckid, question) => {
+    try {
+        const deck = await getDeck(deckid)
+        const questionJSON = JSON.stringify({
+            [deckid]: {
+                questions: [...deck.questions].concat(question)
+            }
+        })
+        await AsyncStorage.mergeItem(DECK_STORAGE_KEY, questionJSON)
+    } catch(e) {
+        console.log(e)
     }
 }

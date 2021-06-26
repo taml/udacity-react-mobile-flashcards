@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { receiveDecks } from '../actions/decks'
 import { getDecks } from '../utils/api'
@@ -18,9 +18,11 @@ class Decks extends Component {
             <View style={styles.deckContainer}>
                 {console.log(decks)}
                 <Text style={{fontWeight: 700, fontSize: 22}}>Decks</Text>
-                {Object.keys(decks).map((key) => 
-                    <Deck key={key} singledeck={decks[key]} />
-                )}
+                <ScrollView>
+                    {Object.keys(decks).map((key) => 
+                        <Deck key={key} singledeck={decks[key]} />
+                    )}
+                </ScrollView>
             </View>
         )
     }

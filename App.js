@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Tabs } from './routes/router'
+import { DecksFlow } from './routes/router'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -13,7 +13,7 @@ export default function App() {
     <Provider store={store}>
       <StatusBar backgroundColor='#000000' />
       <NavigationContainer>
-        <Tabs />
+        <DecksFlow />
       </NavigationContainer>
     </Provider>
   )
