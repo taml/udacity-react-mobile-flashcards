@@ -1,5 +1,5 @@
 import React, {useState } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TextInput, Button } from 'react-native'
 import { addQuestion } from '../utils/api'
 import { addQuestionToDeck } from '../actions/decks'
 import { connect } from 'react-redux'
@@ -8,20 +8,15 @@ function NewQuestion(props) {
     const [question, setQuestion] = useState('')
     const [answer, setAnswer] = useState('')
 
-    const handleQuestion = (e) => {
-        e.preventDefault()
-        const newQ = e.target.value
-        setQuestion(newQ)
+    const handleQuestion = (questionText) => {
+        setQuestion(questionText)
     }
 
-    const handleAnswer = (e) => {
-        e.preventDefault()
-        const newA = e.target.value
-        setAnswer(newA)
+    const handleAnswer = (answerText) => {
+        setAnswer(answerText)
     }
 
-    const handleQuestionSubmit = (e) => {
-        e.preventDefault()
+    const handleQuestionSubmit = () => {
         const { navigation, dispatch } = props
         const deckTitle = props.route.params.deckid
         const questionBody = {
@@ -37,12 +32,10 @@ function NewQuestion(props) {
 
     return(
         <View>
-            <form onSubmit={handleQuestionSubmit}>
-                <Text>Add New Question to Deck</Text>
-                <textarea type='text' placeholder='E.g Which group of animal is called a business?' value={question} onChange={handleQuestion} />
-                <textarea type='text' placeholder='E.g Ferrets' value={answer} onChange={handleAnswer} />
-                <button type='submit' disabled={question.length === 0 || answer.length === 0 ? true : false}>Add New Question</button>
-            </form>
+            <Text>Add New Question to Deck</Text>
+            <TextInput type='text' placeholder='E.g Which group of animal is called a business?' value={question} onChangeText={handleQuestion} />
+            <TextInput type='text' placeholder='E.g Ferrets' value={answer} onChangeText={handleAnswer} />
+            <Button title='Add New Question' disabled={question.length === 0 || answer.length === 0 ? true : false} onPress={handleQuestionSubmit} />
         </View>
     )
 }

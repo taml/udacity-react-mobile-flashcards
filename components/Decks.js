@@ -14,10 +14,17 @@ class Decks extends Component {
     }
     render() {
         const { decks } = this.props
+        if (Object.keys(decks).length === 0) {
+            return(
+                <View>
+                    <Text>You haven't added any Flashcard decks yet. Why not add one!</Text>
+                </View>
+            )
+        }
         return(
             <View style={styles.deckContainer}>
                 {console.log(decks)}
-                <Text style={{fontWeight: 700, fontSize: 22}}>Decks</Text>
+                <Text style={{fontWeight: '700', fontSize: 22}}>Decks</Text>
                 <ScrollView>
                     {Object.keys(decks).map((key) => 
                         <Deck key={key} singledeck={decks[key]} />

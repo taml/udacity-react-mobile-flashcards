@@ -44,3 +44,15 @@ export const addQuestion = async (deckid, question) => {
         console.log(e)
     }
 }
+
+export const deleteDeck = async (deckid) => {
+    try {
+        const decks = await AsyncStorage.getItem(DECK_STORAGE_KEY)
+        const decksJSON = JSON.parse(decks)
+        delete decksJSON[deckid]
+        const newDecksJSON = JSON.stringify(decksJSON)
+        await AsyncStorage.setItem(DECK_STORAGE_KEY, newDecksJSON)
+    } catch(e) {
+        console.log(e)
+    }
+}

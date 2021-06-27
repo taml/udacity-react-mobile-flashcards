@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import { deleteDeck } from '../utils/api'
+import { removeDeck } from '../actions/decks'
 import { connect } from 'react-redux'
 
 export const AddQuestionBtn = (props) => {
@@ -11,15 +13,38 @@ export const AddQuestionBtn = (props) => {
     )
 }
 
+const handleDeleteDeck = (dispatch, navigation, deckTitle) => {
+    dispatch(removeDeck(deckTitle))
+    navigation.navigate('DecksHome')
+    deleteDeck(deckTitle)
+}
+
+export const RemoveDeckBtn = (props) => {
+    const { dispatch, navigation, deckTitle } = props
+    return(
+        <TouchableOpacity onPress={() => handleDeleteDeck(dispatch, navigation, deckTitle)}>
+            <Text>Remove This Deck</Text>
+        </TouchableOpacity>
+    )
+}
+
 class DeckDetail extends Component {
     render() {
-        const deckTitle = this.props.deck.title
-        const { deck, navigation } = this.props
+        const { dispatch, deck, navigation } = this.props
+        if(typeof deck === 'undefined') {
+            return(
+                <View>
+                    <Text>Deck Not Found</Text>
+                </View>
+            )
+        }
+        const deckTitle = deck.title
         const totalInDeck = deck.questions.length
         return(
             <View>
                 <Text>{`${totalInDeck} ${totalInDeck !== 1 ? 'Questions' : 'Question'} in this deck`}</Text>
                 <AddQuestionBtn navigation={navigation} deckTitle={deckTitle} />
+                <RemoveDeckBtn dispatch={dispatch} navigation={navigation} deckTitle={deckTitle} />
             </View>
         )
     }
