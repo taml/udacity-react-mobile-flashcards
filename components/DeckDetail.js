@@ -28,6 +28,15 @@ export const RemoveDeckBtn = (props) => {
     )
 }
 
+export const StartQuizBtn = (props) => {
+    const { navigation, deck } = props
+    return(
+        <TouchableOpacity onPress={() => navigation.navigate('QuestionsQuiz', {deck: deck})}>
+            <Text>Start Quiz</Text>
+        </TouchableOpacity>
+    )
+}
+
 class DeckDetail extends Component {
     render() {
         const { dispatch, deck, navigation } = this.props
@@ -44,7 +53,12 @@ class DeckDetail extends Component {
             <View>
                 <Text>{`${totalInDeck} ${totalInDeck !== 1 ? 'Questions' : 'Question'} in this deck`}</Text>
                 <AddQuestionBtn navigation={navigation} deckTitle={deckTitle} />
-                <RemoveDeckBtn dispatch={dispatch} navigation={navigation} deckTitle={deckTitle} />
+                {totalInDeck !== 0 &&
+                    <View>
+                        <StartQuizBtn navigation={navigation} deck={deck} />
+                        <RemoveDeckBtn dispatch={dispatch} navigation={navigation} deckTitle={deckTitle} />
+                    </View>
+                }
             </View>
         )
     }
