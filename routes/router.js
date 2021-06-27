@@ -7,6 +7,7 @@ import DeckDetail from '../components/DeckDetail'
 import QuestionsQuiz from '../components/QuestionsQuiz'
 import NewQuestion from '../components/NewQuestion'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { purple, lighterPurple, blueGrey, white } from '../utils/colors'
 
 const MainTabs = createBottomTabNavigator()
 
@@ -25,8 +26,8 @@ export const Tabs = () => (
             },
         })}
         tabBarOptions={{
-            activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
+            activeTintColor: lighterPurple,
+            inactiveTintColor: blueGrey,
         }}>
         <MainTabs.Screen name="Decks" component={Decks} />
         <MainTabs.Screen name="NewDeck" component={NewDeck} />
@@ -41,29 +42,47 @@ export const DecksFlow = () => {
             <DeckStack.Screen name="DecksHome" component={Tabs} 
                 options={{
                     title: 'Mobile Flashcards',
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
+                        
                 }
             }}/>
             <DeckStack.Screen name="DeckDetail" component={DeckDetail} 
                 options={({ route }) => ({ 
                     title: route.params.deckid,
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
                 } 
             })} />
             <DeckStack.Screen name="QuestionsQuiz" component={QuestionsQuiz} 
                 options={{
                     title: 'Quiz',
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
                 } 
             }} />
             <DeckStack.Screen name="NewQuestion" component={NewQuestion} 
                 options={{
                     title: 'Add New Question',
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
                 } 
             }} />
         </DeckStack.Navigator>
@@ -78,29 +97,46 @@ export const NewDeckFlow = () => {
             <NewDeckStack.Screen name="CreateNewDeck" component={Tabs} 
                 options={{
                     title: 'Mobile Flashcards',
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
                     }
             }} />
             <NewDeckStack.Screen name="DeckDetail" component={DeckDetail} 
                 options={({ route }) => ({ 
                     title: route.params.deckid,
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
                     } 
             })} />
             <NewDeckStack.Screen name="QuestionsQuiz" component={QuestionsQuiz} 
                 options={{
                     title: 'Quiz',
+                    headerTitleStyle: {
+                        color: white,
+                    },
                     headerStyle: {
                         borderBottomColor: 'transparent',
+                        backgroundColor: purple,
                 } 
             }} />
             <NewDeckStack.Screen name="NewQuestion" component={NewQuestion} 
                 options={{
                 title: 'Add New Question',
+                headerTitleStyle: {
+                    color: white,
+                },
                 headerStyle: {
                     borderBottomColor: 'transparent',
+                    backgroundColor: purple,
                 } 
             }} />
         </NewDeckStack.Navigator>

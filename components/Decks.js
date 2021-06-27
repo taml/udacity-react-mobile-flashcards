@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { receiveDecks } from '../actions/decks'
 import { getDecks } from '../utils/api'
 import Deck from './Deck'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import { lighterPurple, blueGrey } from '../utils/colors'
 
 class Decks extends Component {
     componentDidMount() {
@@ -16,15 +18,16 @@ class Decks extends Component {
         const { decks } = this.props
         if (Object.keys(decks).length === 0) {
             return(
-                <View>
-                    <Text>You haven't added any Flashcard decks yet. Why not add one!</Text>
+                <View style={styles.emptyDeckContainer}>
+                    <Ionicons name='chatbox-outline' size={60} color={lighterPurple} />
+                    <Text style={styles.emptyDeckText}>You haven't added any Flashcard decks yet. Why not add one!</Text>
                 </View>
             )
         }
         return(
             <View style={styles.deckContainer}>
                 {console.log(decks)}
-                <Text style={{fontWeight: '700', fontSize: 22}}>Decks</Text>
+                <Text style={styles.deckText}>My Decks</Text>
                 <ScrollView>
                     {Object.keys(decks).map((key) => 
                         <Deck key={key} singledeck={decks[key]} />
@@ -43,6 +46,24 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         padding: 20,
     }, 
+    deckText: {
+        fontWeight: '700', 
+        fontSize: 20,
+        paddingBottom: 16,
+        color: blueGrey,
+    },
+    emptyDeckContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 40,
+    },
+    emptyDeckText: {
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: '600',
+        color: blueGrey,
+    }
 })
 
 function mapStateToProps( decks ) {

@@ -5,12 +5,13 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers/decks'
+import { purple } from './utils/colors'
 
 export default function App() {
   const store = createStore(reducer)
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor='#000000' />
+      <StatusBar backgroundColor={purple} />
         <NavigationContainer>
           <DecksFlow />
         </NavigationContainer>
