@@ -20,7 +20,7 @@ export const Tabs = () => (
                     ? 'albums'
                     : 'albums-outline'
             } else if (route.name === 'NewDeck') {
-                iconName = focused ? 'add-circle' : 'add-circle-outline'
+                iconName = focused ? 'add' : 'add-outline'
             }
                 return <Ionicons name={iconName} size={size} color={color} />
             },
@@ -29,8 +29,8 @@ export const Tabs = () => (
             activeTintColor: lighterPurple,
             inactiveTintColor: blueGrey,
         }}>
-        <MainTabs.Screen name="Decks" component={Decks} />
-        <MainTabs.Screen name="NewDeck" component={NewDeck} />
+        <MainTabs.Screen name="Decks" component={Decks} options={{ tabBarLabel: 'My Decks'}}/>
+        <MainTabs.Screen name="NewDeck" component={NewDeck} options={{ tabBarLabel: 'New Deck'}}/>
     </MainTabs.Navigator>
 )
 
@@ -43,6 +43,7 @@ export const DecksFlow = () => {
                 options={{
                     title: 'Mobile Flashcards',
                     headerTitleAlign: 'center',
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -55,6 +56,7 @@ export const DecksFlow = () => {
             <DeckStack.Screen name="DeckDetail" component={DeckDetail} 
                 options={({ route }) => ({ 
                     title: route.params.deckid,
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -66,6 +68,7 @@ export const DecksFlow = () => {
             <DeckStack.Screen name="QuestionsQuiz" component={QuestionsQuiz} 
                 options={{
                     title: 'Quiz',
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -77,6 +80,7 @@ export const DecksFlow = () => {
             <DeckStack.Screen name="NewQuestion" component={NewQuestion} 
                 options={{
                     title: 'Add New Question',
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -98,6 +102,7 @@ export const NewDeckFlow = () => {
                 options={{
                     title: 'Mobile Flashcards',
                     headerTitleAlign: 'center',
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -109,6 +114,7 @@ export const NewDeckFlow = () => {
             <NewDeckStack.Screen name="DeckDetail" component={DeckDetail} 
                 options={({ route }) => ({ 
                     title: route.params.deckid,
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -120,6 +126,7 @@ export const NewDeckFlow = () => {
             <NewDeckStack.Screen name="QuestionsQuiz" component={QuestionsQuiz} 
                 options={{
                     title: 'Quiz',
+                    headerTintColor: white,
                     headerTitleStyle: {
                         color: white,
                     },
@@ -131,6 +138,7 @@ export const NewDeckFlow = () => {
             <NewDeckStack.Screen name="NewQuestion" component={NewQuestion} 
                 options={{
                 title: 'Add New Question',
+                headerTintColor: white,
                 headerTitleStyle: {
                     color: white,
                 },

@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     deckContainer: {
         flex: 1,
         justifyContent: 'space-between',
-        alignItems: 'center',
         textAlign: 'center',
         padding: 20,
     }, 
