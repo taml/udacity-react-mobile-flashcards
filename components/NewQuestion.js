@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import { addQuestion } from '../utils/api'
 import { addQuestionToDeck } from '../actions/decks'
 import { connect } from 'react-redux'
-import { lighterPurple, blueGrey, lightGrey, white, darkBlueGrey } from '../utils/colors'
+import { lighterPurple, purple, blueGrey, lightGrey, white, darkBlueGrey } from '../utils/colors'
 
 const NewQuestion = (props) => {
     const [question, setQuestion] = useState('')
@@ -40,8 +40,8 @@ const NewQuestion = (props) => {
                 <Text style={styles.deckInputHeading}>Answer</Text>
                 <TextInput style={styles.deckInput} type='text' placeholder='E.g Ferrets' placeholderTextColor={blueGrey} value={answer} onChangeText={handleAnswer} />
             </View>
-            <TouchableOpacity style={styles.mainDeckBtn} disabled={question.length === 0 || answer.length === 0 ? true : false} onPress={handleQuestionSubmit}>
-                <Text style={styles.mainDeckBtnText}>+ Add New Question</Text>
+            <TouchableOpacity style={[styles.mainDeckBtn, { backgroundColor: question.length === 0 || answer.length === 0 ? lighterPurple : purple }]} disabled={question.length === 0 || answer.length === 0 ? true : false} onPress={handleQuestionSubmit}>
+                <Text style={styles.mainDeckBtnText}>Save Question</Text>
             </TouchableOpacity>
         </View>
     )

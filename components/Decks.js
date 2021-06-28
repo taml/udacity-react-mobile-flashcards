@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         paddingBottom: 16,
         color: blueGrey,
+        textAlign: 'center',
     },
     emptyDeckContainer: {
         flex: 1,

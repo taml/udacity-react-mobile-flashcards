@@ -30,7 +30,7 @@ const NewDeck = (props) => {
                 <TextInput style={styles.deckInput} type='text' placeholder='E.g Animals' placeholderTextColor={blueGrey} value={deckTitle} onChangeText={handleDeckTitle} />
             </View>
             <TouchableOpacity style={[styles.mainDeckBtn, { backgroundColor: isInputEmpty ? lighterPurple : purple }]} disabled={isInputEmpty} onPress={handleDeckSubmit}>
-                <Text style={styles.mainDeckBtnText}>+ Add New Deck</Text>
+                <Text style={styles.mainDeckBtnText}>Save New Deck</Text>
             </TouchableOpacity>
         </View>
     )

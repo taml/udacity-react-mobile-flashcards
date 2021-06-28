@@ -29,12 +29,14 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         color: blueGrey,
         paddingBottom: 8,
+        textAlign: 'center',
     },
     deckCardSubText: {
         fontSize: 12,
         fontWeight: '200',
         color: darkBlueGrey,
         textTransform: 'uppercase',
+        textAlign: 'center',
     }
 })
 

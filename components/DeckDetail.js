@@ -4,7 +4,7 @@ import { deleteDeck } from '../utils/api'
 import { removeDeck } from '../actions/decks'
 import { connect } from 'react-redux'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { purple, blueGrey, darkBlueGrey, white } from '../utils/colors'
+import { purple, blueGrey, darkBlueGrey, white, lighterPurple } from '../utils/colors'
 
 export const AddQuestionBtn = (props) => {
     const { navigation, deckTitle } = props
@@ -46,7 +46,7 @@ class DeckDetail extends Component {
             return(
                 <View style={styles.emptyDeckContainer}>
                     <Ionicons name='chatbox-outline' size={60} color={lighterPurple} />
-                    <Text style={emptyDeckText}>Deck Not Found</Text>
+                    <Text style={styles.emptyDeckText}>Deck Not Found</Text>
                 </View>
             )
         }
