@@ -26,7 +26,6 @@ class Decks extends Component {
         }
         return(
             <View style={styles.deckContainer}>
-                {console.log(decks)}
                 <Text style={styles.deckText}>My Decks</Text>
                 <ScrollView>
                     {Object.keys(decks).map((key) => 

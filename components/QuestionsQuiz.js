@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { lighterPurple, blueGrey, darkBlueGrey, white, purple, green, red } from '../utils/colors'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { blueGrey, darkBlueGrey, white, purple, green, red } from '../utils/colors'
+import QuizResults from './QuizResults'
 
 class QuestionsQuiz extends Component {
     state = {
@@ -44,25 +44,12 @@ class QuestionsQuiz extends Component {
         const deck = this.props.route.params.deck
         const { score, questionsIterator, showAnswer } = this.state
         const totalInDeck = deck.questions.length
+
         return(
-            
             <View style={styles.deckContainer}>
                 {questionsIterator === totalInDeck ? 
-                    <View style={{flex: 1}}>
-                        <View style={{flex: 1, alignItems: 'center'}}>
-                            {score >= (deck.questions.length / 2) ? <Ionicons name='thumbs-up-outline' size={60} color={lighterPurple} /> : 
-                            <Ionicons name='thumbs-down-outline' size={60} color={lighterPurple} />}
-                            <Text style={styles.deckText}>{`You got ${score} out of ${totalInDeck}!`}</Text>
-                        </View>
-                        <View>
-                            <TouchableOpacity style={[styles.mainDeckBtn, {marginBottom: 16}]} onPress={this.handleQuizReset} >
-                                <Text style={styles.mainDeckBtnText}>Restart Quiz</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => navigation.navigate('DeckDetail', {deckid: deck.title})}>
-                                <Text style={styles.secondaryText}>Back to Deck</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View> : 
+                    <QuizResults navigation={navigation} totalInDeck={totalInDeck} 
+                        score={score} deckTitle={deck.title} handleQuizReset={this.handleQuizReset} /> : 
                     <View style={{flex: 1}}>
                         <View style={{flex: 1}}>
                             <Text style={styles.remainingText}>{`${totalInDeck - questionsIterator} / ${totalInDeck} Questions Remaining`}</Text>
