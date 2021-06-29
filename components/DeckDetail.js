@@ -71,8 +71,6 @@ class DeckDetail extends Component {
 
 const mapStateToProps = (decks, props) => {
     const deckTitle = props.route.params.deckid
-    console.log(deckTitle)
-    console.log(decks)
     return {
         deck: decks[deckTitle]
     }

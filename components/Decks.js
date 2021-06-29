@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     }
 })
 
-function mapStateToProps( decks ) {
+const mapStateToProps = ( decks ) => {
     return {
         decks,
     }
